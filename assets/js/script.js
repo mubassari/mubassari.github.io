@@ -9,7 +9,7 @@ $(window).on('load', function() {
 $(document).ready(function(){
 // Scrollspy mulus
     $('body').scrollspy({target: ".navbar", offset: 50});  
-    $("#navbar a").on('click', function(event) {
+    $("#scrollku a").on('click', function(event) {
         if (this.hash !== "") {
             event.preventDefault();
             var hash = this.hash;
