@@ -27,6 +27,7 @@ $(document).ready(function(){
     });
     $("#tombol").click(function(){
         $('#info').empty();
+        $('#data-media').empty();
         var dataLink = $('#link').val().split("?",1);
         $.ajax({
             url: dataLink+'?__a=1',
@@ -38,7 +39,6 @@ $(document).ready(function(){
                 switch(typeMedia){
                     case 'GraphImage':
                         var imgLink = infoMedia.display_resources[2].src;
-                        $('#data-media').empty();
                         $(`<div class="card text-center" style="width: 18rem;">
                         <img src="`+imgLink+`" class="card-img-top">
                         <div class="card-body">
@@ -52,7 +52,6 @@ $(document).ready(function(){
                     case 'GraphVideo':
                         var imgLink = infoMedia.display_resources[2].src;
                         var vidLink = infoMedia.video_url;
-                        $('#data-media').empty();
                         $(`<div class="card text-center" style="width: 18rem;">
                         <video class="embed-responsive card-img-top" poster="`+imgLink+`" controls>
                         <source src="`+vidLink+`" type="video/mp4">
@@ -66,14 +65,12 @@ $(document).ready(function(){
                         break;
                     case 'GraphSidecar':
                         var sideInfo = infoMedia.edge_sidecar_to_children.edges;
-                        
-                        $('#data-media').empty();
-                        $('<div class="card-columns" id="cardData"></div>').appendTo('#data-media');
+                        $('<div class="row d-flex justify-content-center" id="cardData"></div>').appendTo('#data-media');
                         $.each(sideInfo,function(i,item){
                             var mediaType = sideInfo[i].node.__typename;
                             if (mediaType == 'GraphImage'){
                                 var imgLink = sideInfo[i].node.display_resources[2].src;
-                                $(`<div class="card text-center">
+                                $(`<div class="card text-center col-md-3 p-0 m-2">
                                 <img src="`+imgLink+`" class="card-img-top">
                                 <div class="card-body">
                                 <a href="`+imgLink+`" target="_blank" class="btn btn-primary">
@@ -84,7 +81,7 @@ $(document).ready(function(){
                             } else {
                                 var imgLink = sideInfo[i].node.display_resources[2].src;
                                 var vidLink = sideInfo[i].node.video_url;
-                                $(`<div class="card text-center">
+                                $(`<div class="card text-center col-md-3 p-0 m-2">
                                 <video class="embed-responsive card-img-top" poster="`+imgLink+`" controls>
                                 <source src="`+vidLink+`" type="video/mp4">
                                 </video>
@@ -99,7 +96,7 @@ $(document).ready(function(){
                 }
             },
             error: function (data) {
-                $('<div class="alert alert-danger" role="alert">A simple danger alert—check it out!</div>').appendTo('#info');
+                $('<div class="alert alert-danger" role="alert"><strong>GALAT</strong> - Harap periksa kembali tautan Anda!</div>').appendTo('#info');
             }
         });
     });
