@@ -21,3 +21,18 @@
         background-color: #fff !important;
         color: #171717 !important;
     }
+    .nav-tabs{
+        border-bottom: none;
+    }
+    .nav-link:hover {
+        background-color: #fff;
+        color: #171717 !important;
+        border: 1px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+    .nav-tabs .nav-link {
+        border: 1px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
