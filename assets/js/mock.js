@@ -1,17 +1,9 @@
     var sebelum = $("#sebelum");
     var sesudah = $("#sesudah");
-
+    
 $(document).ready(function(){
-// Ganti ke huruf I
-    sebelum.on("input",function(){
-            var hurufKecil = sebelum.val().split("a").join("i").split("u").join("i").split("e").join("i").split("o").join("i");
-            var hurufBesar = hurufKecil.split("A").join("I").split("U").join("I").split("E").join("I").split("O").join("I");
-        sebelum.css("height","5px");
-        sebelum.css("height",sebelum.prop("scrollHeight")+5+"px");
-        sesudah.css("height","5px");
-        sesudah.css("height",sebelum.prop("scrollHeight")+1+"px");
-        sesudah.val(hurufBesar);
-    });
+    $("#opsiGaya").change(mocking); // Option Change
+    sebelum.on("input",mocking); // New Type Change
 // Bersihkan textarea
     $("#tombol_sebelum").on("click",function(){
         sebelum.focus();
@@ -24,3 +16,31 @@ $(document).ready(function(){
         document.execCommand('copy');
     });
 });
+// Mocking
+function mocking(){
+    var hasil = "";
+    var huruf = sebelum.val().split("");
+    var hurufData = ['a','u','e','o'];
+    $.each(huruf, function(i,v){
+        switch($("#opsiGaya").val()){
+            case "0": // micking
+                if($.inArray(v,hurufData) >= 0 ){
+                    hasil += v.replace(v, "i");
+                }else{
+                    hasil += v;
+                }
+                break;
+            default: // mOcKiNg
+                if(i % 2 != 0){
+                    hasil += v.toUpperCase();
+                }else{
+                    hasil += v;
+                }
+        }
+    });
+    sebelum.css("height","5px");
+    sebelum.css("height",sebelum.prop("scrollHeight")+5+"px");
+    sesudah.css("height","5px");
+    sesudah.css("height",sebelum.prop("scrollHeight")+1+"px");
+    sesudah.val(hasil);
+}
