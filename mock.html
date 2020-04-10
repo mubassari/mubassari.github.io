@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/preload.css">
     <title>MOCKING</title>
 </head>
 <body>
@@ -17,19 +17,24 @@
     <div class="container-fluid mt-3">
         <h1 class="text-center">JUDUL</h1>
         <form class="row">
-            <div class="form-group col-sm col-md-5">
+            <div class="form-group col-sm col-md-5 pt-2">
                 <label for="sebelum" class="lead">Masukkan Text</label>
                 <input type="button" class="btn btn-primary float-right" id="tombol_sebelum" value="Bersihkan">
                 <textarea class="form-control mt-1" id="sebelum" rows="1"></textarea>
             </div>
             <div class="form-group col-sm col-md-2">
-              <label for="opsiGaya" class="lead">Gaya</label>
-              <select class="form-control mt-1" id="opsiGaya">
-                <option value="0">Micking</option>
-                <option value="1">mOcKiNg</option>
-              </select>
+              <div class="sticky-top pt-2">
+                <label for="opsiGaya" class="lead">Gaya</label>
+                <select class="form-control mt-1" id="opsiGaya">
+                  <option value="0">Micking</option>
+                  <option value="1">mOcKiNg</option>
+                </select>
+                <div class="p-3 text-center fixed-bottom">
+                  <span>&copy; Made by <a href="https://mubassari.github.io">Mauli Mubassari</a></span>
+                </div>
+              </div>
             </div>
-            <div class="form-group col-sm col-md-5">
+            <div class="form-group col-sm col-md-5 pt-2">
                 <label for="sesudah" class="lead">Hasil</label>
                 <input type="button" class="btn btn-primary float-right" id="tombol_sesudah" value="Salin">
                 <textarea class="form-control mt-1" id="sesudah" rows="1" readonly></textarea>
