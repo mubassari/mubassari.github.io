@@ -11,24 +11,29 @@ $(document).ready(function(){
       var Positif = [];
       var Meninggal = [];
       var Sembuh = [];
-      
+
       var posall = indo[indo.length-1].confirmed;
       var menall = indo[indo.length-1].deaths;
       var semall = indo[indo.length-1].recovered;
-      
       // Set new default font family and font color to mimic Bootstrap's default styling
       Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
       Chart.defaults.global.defaultFontColor = '#858796';
       
       $.each(indo, function(i,item){
-        if(indo[i].confirmed == '0' && indo[i].recovered == '0' && indo[i].deaths == '0'){
+        if(i < 40 || i % 7 != 0 || i == indo.length-1){
           return;
         } else {
+          console.log(indo[i].date);
           Tanggal.push(indo[i].date);
           Positif.push(indo[i].confirmed);
           Sembuh.push(indo[i].recovered);
-          Meninggal.push(indo[i].deaths);}
-        });
+          Meninggal.push(indo[i].deaths);
+        }
+      });
+      Tanggal.push('Hari Ini');
+      Positif.push(posall);
+      Sembuh.push(semall);
+      Meninggal.push(menall);
       
       function number_format(number, decimals, dec_point, thousands_sep) {
         // *     example: number_format(1234.56, 2, ',', ' ');
@@ -55,53 +60,23 @@ $(document).ready(function(){
         return s.join(dec);
       }
 
-      // Area Chart Example
-      var ctx = document.getElementById("myAreaChart");
-      var myLineChart = new Chart(ctx, {
-        type: 'line',
+      // Bar Chart Example
+      var ctx = document.getElementById("myBarChart");
+      var myBarChart = new Chart(ctx, {
+        type: 'bar',
         data: {
           labels: Tanggal,
           datasets: [{
             label: "Positif",
-            lineTension: 0.3,
-            backgroundColor: "rgba(78, 115, 223, 0.05)",
-            borderColor: "rgba(78, 115, 223, 1)",
-            pointRadius: 3,
-            pointBackgroundColor: "rgba(78, 115, 223, 1)",
-            pointBorderColor: "rgba(78, 115, 223, 1)",
-            pointHoverRadius: 3,
-            pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-            pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-            pointHitRadius: 10,
-            pointBorderWidth: 2,
+            backgroundColor: "rgba(78, 115, 223, 1)",
             data: Positif,
           },{
             label: "Sembuh",
-            lineTension: 0.3,
-            backgroundColor: "rgba(78, 115, 223, 0.05)",
-            borderColor: "#1cc88a",
-            pointRadius: 3,
-            pointBackgroundColor: "#1cc88a",
-            pointBorderColor: "#1cc88a",
-            pointHoverRadius: 3,
-            pointHoverBackgroundColor: "#1cc88a",
-            pointHoverBorderColor: "#1cc88a",
-            pointHitRadius: 10,
-            pointBorderWidth: 2,
+            backgroundColor: "#1cc88a",
             data: Sembuh,
           },{
             label: "Meninggal",
-            lineTension: 0.3,
-            backgroundColor: "rgba(78, 115, 223, 0.05)",
-            borderColor: "#e74a3b",
-            pointRadius: 3,
-            pointBackgroundColor: "#e74a3b",
-            pointBorderColor: "#e74a3b",
-            pointHoverRadius: 3,
-            pointHoverBackgroundColor: "#e74a3b",
-            pointHoverBorderColor: "#e74a3b",
-            pointHitRadius: 10,
-            pointBorderWidth: 2,
+            backgroundColor: "#e74a3b",
             data: Meninggal,
           }],
         },
@@ -109,16 +84,16 @@ $(document).ready(function(){
           maintainAspectRatio: false,
           layout: {
             padding: {
-              left: 10,
-              right: 25,
-              top: 25,
+              left: 0,
+              right: 0,
+              top: 0,
               bottom: 0
             }
           },
           scales: {
             xAxes: [{
               time: {
-                unit: 'date'
+                unit: 'month'
               },
               gridLines: {
                 display: false,
@@ -126,10 +101,12 @@ $(document).ready(function(){
               },
               ticks: {
                 maxTicksLimit: 20
-              }
+              },
+              maxBarThickness: 25
             }],
             yAxes: [{
               ticks: {
+                min: 0,
                 maxTicksLimit: 10,
                 padding: 10,
                 // Include a dollar sign in the ticks
@@ -147,7 +124,8 @@ $(document).ready(function(){
             }],
           },
           legend: {
-            display: false
+            display: true,
+            position: "bottom"
           },
           tooltips: {
             backgroundColor: "rgb(255,255,255)",
@@ -169,7 +147,7 @@ $(document).ready(function(){
                 return datasetLabel + ' : ' + number_format(tooltipItem.yLabel) + ' Orang';
               }
             }
-          }
+          },
         }
       });
 
@@ -199,7 +177,8 @@ $(document).ready(function(){
             caretPadding: 10,
           },
           legend: {
-            display: false
+            display: true,
+            position: "bottom"
           },
           cutoutPercentage: 0,
         },

@@ -35,11 +35,6 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
           <div class="navbar-nav ml-auto mr-auto">
               <b class="nav-item lead text-uppercase font-weight-bold">Data COVID-19</b>
           </div>
@@ -69,7 +64,6 @@
               </div>
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-4 col-md-6 mb-4">
               <div class="card bg-success shadow h-100 py-2">
                 <div class="card-body">
@@ -86,7 +80,6 @@
               </div>
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-4 col-md-6 mb-4">
               <div class="card bg-danger shadow h-100 py-2">
                 <div class="card-body">
@@ -107,29 +100,16 @@
           <!-- Content Row -->
 
           <div class="row">
-
-            <!-- Area Chart -->
             <div class="col-xl-8 col-lg-7">
+
+              <!-- Bar Chart -->
               <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Line Chart</h6>
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-center">
+                  <h6 class="m-0 font-weight-bold text-primary">Bar Chart (Per Minggu)</h6>
                 </div>
-                <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Positif
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Sembuh
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-danger"></i> Meninggal
-                    </span>
+                  <div class="chart-bar">
+                    <canvas id="myBarChart"></canvas>
                   </div>
                 </div>
               </div>
@@ -138,25 +118,14 @@
             <!-- Pie Chart -->
             <div class="col-xl-4 col-lg-5">
               <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Pie Chart</h6>
+                <!-- Card Header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-center">
+                  <h6 class="m-0 font-weight-bold text-primary">Pie Chart (Total Hari Ini)</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-pie pt-4 pb-2">
                     <canvas id="myPieChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Positif
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Sembuh
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-danger"></i> Meninggal
-                    </span>
                   </div>
                 </div>
               </div>
