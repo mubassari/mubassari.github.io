@@ -23,8 +23,8 @@ $(document).ready(function(){
         if(i < 40 || i % 7 != 0 || i == indo.length-1){
           return;
         } else {
-          console.log(indo[i].date);
-          Tanggal.push(indo[i].date);
+          console.log(moment(indo[i].date).format('DD MMM'));
+          Tanggal.push(moment(indo[i].date).format('DD MMM'));
           Positif.push(indo[i].confirmed);
           Sembuh.push(indo[i].recovered);
           Meninggal.push(indo[i].deaths);
@@ -63,7 +63,7 @@ $(document).ready(function(){
       // Bar Chart Example
       var ctx = document.getElementById("myBarChart");
       var myBarChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'horizontalBar',
         data: {
           labels: Tanggal,
           datasets: [{
@@ -92,19 +92,6 @@ $(document).ready(function(){
           },
           scales: {
             xAxes: [{
-              time: {
-                unit: 'month'
-              },
-              gridLines: {
-                display: false,
-                drawBorder: false
-              },
-              ticks: {
-                maxTicksLimit: 20
-              },
-              maxBarThickness: 25
-            }],
-            yAxes: [{
               ticks: {
                 min: 0,
                 maxTicksLimit: 10,
@@ -121,6 +108,19 @@ $(document).ready(function(){
                 borderDash: [2],
                 zeroLineBorderDash: [2]
               }
+            }],
+            yAxes: [{
+              time: {
+                unit: 'month'
+              },
+              gridLines: {
+                display: false,
+                drawBorder: false
+              },
+              ticks: {
+                maxTicksLimit: 20
+              },
+              maxBarThickness: 25
             }],
           },
           legend: {
@@ -144,7 +144,7 @@ $(document).ready(function(){
             callbacks: {
               label: function(tooltipItem, chart) {
                 var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                return datasetLabel + ' : ' + number_format(tooltipItem.yLabel) + ' Orang';
+                return datasetLabel + ' : ' + number_format(tooltipItem.xLabel) + ' Orang';
               }
             }
           },
