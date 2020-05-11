@@ -41,6 +41,6 @@ function mocking(){
     sebelum.css("height","5px");
     sebelum.css("height",sebelum.prop("scrollHeight")+5+"px");
     sesudah.css("height","5px");
-    sesudah.css("height",sebelum.prop("scrollHeight")+1+"px");
+    sesudah.css("height",sesudah.prop("scrollHeight")+5+"px");
     sesudah.val(hasil);
 }
