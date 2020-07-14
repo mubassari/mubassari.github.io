@@ -20,12 +20,15 @@ $(document).ready(function(){
 function mocking(){
     var hasil = "";
     var huruf = sebelum.val().split("");
-    var hurufData = ['a','u','e','o'];
+    var hurufKecil = ['a','u','e','o'];
+    var hurufBesar = hurufKecil.map(v => v.toUpperCase());
     $.each(huruf, function(i,v){
         switch($("#opsiGaya").val()){
             case "0": // micking
-                if($.inArray(v,hurufData) >= 0 ){
+                if($.inArray(v,hurufKecil) >= 0 ){
                     hasil += v.replace(v, "i");
+                }else if($.inArray(v,hurufBesar) >= 0 ){
+                    hasil += v.replace(v, "I");
                 }else{
                     hasil += v;
                 }
@@ -34,7 +37,7 @@ function mocking(){
                 if(i % 2 != 0){
                     hasil += v.toUpperCase();
                 }else{
-                    hasil += v;
+                    hasil += v.toLowerCase();
                 }
         }
     });
