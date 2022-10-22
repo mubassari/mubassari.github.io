@@ -1,0 +1,1 @@
+import{_ as e,a as n,d as t,e as s}from"./entry.a58003ac.js";const _={},o={class:"preloader d-flex flex-column min-vh-100 justify-content-center align-items-center"},c=s("div",{class:"spinner spinner-border"},null,-1),r=[c];function a(i,d){return n(),t("div",o,r)}const p=e(_,[["render",a]]);export{p as _};
