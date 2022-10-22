@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/spk-saw-vue", {data:[{}],fetch:{},mutations:void 0});
